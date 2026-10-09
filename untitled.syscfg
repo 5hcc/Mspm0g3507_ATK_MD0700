@@ -1,0 +1,149 @@
+/**
+ * These arguments were used when this file was generated. They will be automatically applied on subsequent loads
+ * via the GUI or CLI. Run CLI with '--help' for additional information on how to override these arguments.
+ * @cliArgs --device "MSPM0G350X" --part "Default" --package "LQFP-64(PM)" --product "mspm0_sdk@2.05.00.05"
+ * @v2CliArgs --device "MSPM0G3507" --package "LQFP-64(PM)" --product "mspm0_sdk@2.05.00.05"
+ * @versions {"tool":"1.24.0+4150"}
+ */
+
+/**
+ * Import the modules used in this configuration.
+ */
+const GPIO   = scripting.addModule("/ti/driverlib/GPIO", {}, false);
+const GPIO1  = GPIO.addInstance();
+const GPIO2  = GPIO.addInstance();
+const GPIO3  = GPIO.addInstance();
+const SYSCTL = scripting.addModule("/ti/driverlib/SYSCTL");
+
+/**
+ * Write custom configuration values to the imported modules.
+ */
+const divider9       = system.clockTree["UDIV"];
+divider9.divideValue = 2;
+
+const multiplier2         = system.clockTree["PLL_QDIV"];
+multiplier2.multiplyValue = 10;
+
+const mux4       = system.clockTree["EXHFMUX"];
+mux4.inputSelect = "EXHFMUX_XTAL";
+
+const mux8       = system.clockTree["HSCLKMUX"];
+mux8.inputSelect = "HSCLKMUX_SYSPLL2X";
+
+const mux12       = system.clockTree["SYSPLLMUX"];
+mux12.inputSelect = "zSYSPLLMUX_HFCLK";
+
+const pinFunction4     = system.clockTree["HFXT"];
+pinFunction4.enable    = true;
+pinFunction4.inputFreq = 8;
+
+GPIO1.port                          = "PORTA";
+GPIO1.$name                         = "LCD_GPIO";
+GPIO1.associatedPins.create(5);
+GPIO1.associatedPins[0].$name       = "RS";
+GPIO1.associatedPins[0].assignedPin = "3";
+GPIO1.associatedPins[1].$name       = "WR";
+GPIO1.associatedPins[1].assignedPin = "30";
+GPIO1.associatedPins[2].$name       = "RD";
+GPIO1.associatedPins[2].assignedPin = "29";
+GPIO1.associatedPins[3].$name       = "CS";
+GPIO1.associatedPins[3].assignedPin = "4";
+GPIO1.associatedPins[4].$name       = "RST";
+GPIO1.associatedPins[4].assignedPin = "28";
+
+const Board                       = scripting.addModule("/ti/driverlib/Board", {}, false);
+Board.peripheral.$assign          = "DEBUGSS";
+Board.peripheral.swclkPin.$assign = "PA20";
+Board.peripheral.swdioPin.$assign = "PA19";
+
+GPIO2.$name                          = "LCD_Data";
+GPIO2.port                           = "PORTB";
+GPIO2.associatedPins.create(16);
+GPIO2.associatedPins[0].$name        = "D0";
+GPIO2.associatedPins[0].assignedPin  = "0";
+GPIO2.associatedPins[0].pin.$assign  = "PB0";
+GPIO2.associatedPins[1].$name        = "D1";
+GPIO2.associatedPins[1].assignedPin  = "1";
+GPIO2.associatedPins[1].pin.$assign  = "PB1";
+GPIO2.associatedPins[2].$name        = "D2";
+GPIO2.associatedPins[2].assignedPin  = "2";
+GPIO2.associatedPins[2].pin.$assign  = "PB2";
+GPIO2.associatedPins[3].$name        = "D3";
+GPIO2.associatedPins[3].assignedPin  = "3";
+GPIO2.associatedPins[3].pin.$assign  = "PB3";
+GPIO2.associatedPins[4].$name        = "D4";
+GPIO2.associatedPins[4].assignedPin  = "4";
+GPIO2.associatedPins[4].pin.$assign  = "PB4";
+GPIO2.associatedPins[5].$name        = "D5";
+GPIO2.associatedPins[5].assignedPin  = "5";
+GPIO2.associatedPins[5].pin.$assign  = "PB5";
+GPIO2.associatedPins[6].$name        = "D6";
+GPIO2.associatedPins[6].assignedPin  = "6";
+GPIO2.associatedPins[6].pin.$assign  = "PB6";
+GPIO2.associatedPins[7].$name        = "D7";
+GPIO2.associatedPins[7].assignedPin  = "7";
+GPIO2.associatedPins[7].pin.$assign  = "PB7";
+GPIO2.associatedPins[8].$name        = "D8";
+GPIO2.associatedPins[8].assignedPin  = "8";
+GPIO2.associatedPins[8].pin.$assign  = "PB8";
+GPIO2.associatedPins[9].$name        = "D9";
+GPIO2.associatedPins[9].assignedPin  = "9";
+GPIO2.associatedPins[9].pin.$assign  = "PB9";
+GPIO2.associatedPins[10].$name       = "D10";
+GPIO2.associatedPins[10].assignedPin = "10";
+GPIO2.associatedPins[10].pin.$assign = "PB10";
+GPIO2.associatedPins[11].$name       = "D11";
+GPIO2.associatedPins[11].assignedPin = "11";
+GPIO2.associatedPins[11].pin.$assign = "PB11";
+GPIO2.associatedPins[12].$name       = "D12";
+GPIO2.associatedPins[12].assignedPin = "12";
+GPIO2.associatedPins[12].pin.$assign = "PB12";
+GPIO2.associatedPins[13].$name       = "D13";
+GPIO2.associatedPins[13].assignedPin = "13";
+GPIO2.associatedPins[13].pin.$assign = "PB13";
+GPIO2.associatedPins[14].$name       = "D14";
+GPIO2.associatedPins[14].assignedPin = "14";
+GPIO2.associatedPins[14].pin.$assign = "PB14";
+GPIO2.associatedPins[15].$name       = "D15";
+GPIO2.associatedPins[15].assignedPin = "15";
+GPIO2.associatedPins[15].pin.$assign = "PB15";
+
+GPIO3.port                               = "PORTA";
+GPIO3.$name                              = "TOUCH";
+GPIO3.associatedPins.create(4);
+GPIO3.associatedPins[0].$name            = "SDA";
+GPIO3.associatedPins[0].assignedPin      = "16";
+GPIO3.associatedPins[0].ioStructure      = "SD";
+GPIO3.associatedPins[0].pin.$assign      = "PA16";
+GPIO3.associatedPins[1].$name            = "SCL";
+GPIO3.associatedPins[1].assignedPin      = "17";
+GPIO3.associatedPins[1].pin.$assign      = "PA17";
+GPIO3.associatedPins[2].$name            = "PEN";
+GPIO3.associatedPins[2].assignedPin      = "15";
+GPIO3.associatedPins[2].direction        = "INPUT";
+GPIO3.associatedPins[2].internalResistor = "PULL_UP";
+GPIO3.associatedPins[2].pin.$assign      = "PA15";
+GPIO3.associatedPins[3].$name            = "TCS";
+GPIO3.associatedPins[3].assignedPin      = "2";
+GPIO3.associatedPins[3].pin.$assign      = "PA2";
+
+SYSCTL.forceDefaultClkConfig = true;
+SYSCTL.validateClkStatus     = true;
+
+const ProjectConfig              = scripting.addModule("/ti/project_config/ProjectConfig", {}, false);
+ProjectConfig.migrationCondition = true;
+
+/**
+ * Pinmux solution for unlocked pins/peripherals. This ensures that minor changes to the automatic solver in a future
+ * version of the tool will not impact the pinmux you originally saw.  These lines can be completely deleted in order to
+ * re-solve from scratch.
+ */
+pinFunction4.peripheral.$suggestSolution           = "SYSCTL";
+pinFunction4.peripheral.hfxInPin.$suggestSolution  = "PA5";
+pinFunction4.peripheral.hfxOutPin.$suggestSolution = "PA6";
+GPIO1.associatedPins[0].pin.$suggestSolution       = "PA3";
+GPIO1.associatedPins[1].pin.$suggestSolution       = "PA30";
+GPIO1.associatedPins[2].pin.$suggestSolution       = "PA29";
+GPIO1.associatedPins[3].pin.$suggestSolution       = "PA4";
+GPIO1.associatedPins[4].pin.$suggestSolution       = "PA28";
+SYSCTL.peripheral.$suggestSolution                 = "SYSCTL";

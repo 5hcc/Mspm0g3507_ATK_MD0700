@@ -1,0 +1,178 @@
+version: "4.1"
+name: project
+type: ARM
+deviceName: null
+packDir: null
+srcDirs: []
+virtualFolder:
+  name: <virtual_root>
+  files: []
+  folders:
+    - name: APP
+      files:
+        - path: ../APP/main.c
+        - path: startup_mspm0g350x_uvision.s
+        - path: ../untitled.syscfg
+      folders: []
+    - name: MCU_Drives
+      files:
+        - path: ../MCU_Drives/ti_msp_dl_config.c
+        - path: ../MCU_Drives/ti_msp_dl_config.h
+        - path: ../MCU_Drives/atk_md0430_font.h
+        - path: ../MCU_Drives/lcd.h
+        - path: ../MCU_Drives/lcd.c
+        - path: ../MCU_Drives/i8080ctrl.c
+        - path: ../MCU_Drives/i8080ctrl.h
+        - path: ../MCU_Drives/lcd_touch.c
+        - path: ../MCU_Drives/lcd_touch.h
+        - path: ../MCU_Drives/lcd_touch_iic.c
+        - path: ../MCU_Drives/lcd_touch_iic.h
+        - path: ../MCU_Drives/demo.c
+        - path: ../MCU_Drives/demo.h
+        - path: ../MCU_Drives/lcd_touch_ftxx.c
+        - path: ../MCU_Drives/lcd_function.c
+        - path: ../MCU_Drives/lcd_function.h
+      folders: []
+    - name: Driverlib
+      files:
+        - path: ../driverlib.a
+      folders: []
+dependenceList: []
+outDir: build
+miscInfo:
+  uid: 9d18aafbfffc4bbada7098a9b25d546d
+targets:
+  Target_1:
+    cppPreprocessAttrs:
+      defineList:
+        - __MSPM0G3507__
+      incList:
+        - Include
+        - ..
+        - ../MCU_Drives
+        - ../ti/devices/msp/peripherals
+        - .cmsis/include
+        - RTE/_Target_1
+      libList: []
+    excludeList: []
+    settings:
+      debugger: cortex-debug
+    toolchain: AC6
+    toolchainConfigMap:
+      AC6:
+        archExtensions: ""
+        cpuType: Cortex-M0+
+        floatingPointHardware: none
+        options:
+          version: 3
+          afterBuildTasks: []
+          asm-compiler:
+            $use: asm-auto
+            defines: []
+            misc-controls: ""
+          beforeBuildTasks: []
+          c/cpp-compiler:
+            language-c: c99
+            language-cpp: c++11
+            link-time-optimization: false
+            one-elf-section-per-function: true
+            optimization: level-2
+            short-enums#wchar: true
+            warnings: all-warnings
+          global:
+            output-debug-info: enable
+            use-microLIB: false
+          linker:
+            $outputTaskExcludes:
+              - .bin
+            misc-controls: --diag_suppress=L6329
+            output-format: elf
+            ro-base: "0x00000000"
+            rw-base: "0x20000000"
+            xo-base: ""
+        scatterFilePath: mspm0g3507.sct
+        storageLayout:
+          RAM:
+            - id: 1
+              isChecked: false
+              mem:
+                size: "0x8000"
+                startAddr: "0x20200000"
+              noInit: false
+              tag: RAM
+            - id: 2
+              isChecked: false
+              mem:
+                size: "0x8000"
+                startAddr: "0x20300000"
+              noInit: false
+              tag: RAM
+            - id: 3
+              isChecked: false
+              mem:
+                size: "0x0"
+                startAddr: "0x0"
+              noInit: false
+              tag: RAM
+            - id: 1
+              isChecked: false
+              mem:
+                size: "0x8000"
+                startAddr: "0x20000000"
+              noInit: false
+              tag: IRAM
+            - id: 2
+              isChecked: true
+              mem:
+                size: "0x8000"
+                startAddr: "0x20100000"
+              noInit: false
+              tag: IRAM
+          ROM:
+            - id: 1
+              isChecked: false
+              isStartup: false
+              mem:
+                size: "0x0"
+                startAddr: "0x0"
+              tag: ROM
+            - id: 2
+              isChecked: false
+              isStartup: false
+              mem:
+                size: "0x0"
+                startAddr: "0x0"
+              tag: ROM
+            - id: 3
+              isChecked: false
+              isStartup: false
+              mem:
+                size: "0x0"
+                startAddr: "0x0"
+              tag: ROM
+            - id: 1
+              isChecked: true
+              isStartup: true
+              mem:
+                size: "0x20000"
+                startAddr: "0x0"
+              tag: IROM
+            - id: 2
+              isChecked: false
+              isStartup: false
+              mem:
+                size: "0x20000"
+                startAddr: "0x400000"
+              tag: IROM
+        useCustomScatterFile: true
+    uploadConfigMap:
+      JLink:
+        baseAddr: ""
+        bin: ""
+        cpuInfo:
+          cpuName: "null"
+          vendor: "null"
+        otherCmds: ""
+        proType: 1
+        speed: 8000
+    uploader: JLink

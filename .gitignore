@@ -1,0 +1,30 @@
+﻿# Keil / MDK 编译产物
+keil/Objects/
+keil/Listings/
+keil/DebugConfig/
+*.o
+*.obj
+*.axf
+*.elf
+*.bin
+*.hex
+*.map
+*.lst
+*.crf
+*.d
+*.dep
+*.lnp
+*.htm
+*.build_log.htm
+*.uvguix.*
+*.bak
+
+# TI / SysConfig
+*.syscfg.bak
+ti/
+
+# IDE / 系统
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
